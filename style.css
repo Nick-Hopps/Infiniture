@@ -299,7 +299,7 @@ pre {
 	font-family: "Courier 10 Pitch", Courier, monospace;
 	font-size: 15px;
 	font-size: 0.9375rem;
-	line-height: 1.6;
+	line-height: 1.5;
 	margin-bottom: 1.6em;
 	max-width: 100%;
 	overflow: auto;
@@ -334,7 +334,7 @@ html {
 }
 
 body {
-	font-family: 'Quicksand', sans-serif;
+	font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
 *,
@@ -838,7 +838,7 @@ a:active {
 .page-numbers {
 	position: relative;
 	padding: 8px 14px;
-	line-height: 1.4;
+	line-height: 1.5;
 	color: #47474a;
 	background-color: #fff;
 	border: 1px solid #ddd;
@@ -885,6 +885,11 @@ a:active {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
+.post-main {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
 .posts {
 	text-align: left;
 }
@@ -896,7 +901,7 @@ a:active {
 .post-title {
 	font-size: 2.2em;
 	font-weight: 500;
-	line-height: 120%;
+	line-height: 1.5;
 	margin-bottom: 15px;
 }
 
@@ -915,8 +920,195 @@ a:active {
 	color: #3692c5; 
 }
 
-.post-content {
-	font-size: 1.1em;
+/* Post content */
+
+.post-content { 
+	font-size: 1.05em; 
+}
+
+.post-content a {
+	font-style: italic;
+	font-weight: 400;
+	color: #999;
+}
+
+.post-content a:hover {
+	text-decoration: underline;
+}
+
+.post-content > p,
+.post-content > ul,
+.post-content > ol,
+.post-content > dl,
+.post-content > pre,
+.post-content > address,
+.post-content > blockquote,
+.post-content > .wp-caption {
+	line-height: 1.6;
+	margin-bottom: 1.2em;
+}
+
+.post-content h1, 
+.post-content h2, 
+.post-content h3, 
+.post-content h4, 
+.post-content h5, 
+.post-content h6 {
+	margin: 30px 0;
+	line-height: 1.4;
+	letter-spacing: 1px;
+	font-weight: 600; 
+	color: #444;
+}
+
+.post-content h1 { 
+	font-size: 2em; 
+}
+
+.post-content h2 { 
+	font-size: 1.75em;  
+}
+
+.post-content h3 { 
+	font-size: 1.5em;  
+}
+
+.post-content h4 { 
+	font-size: 1.25em; 
+}
+
+.post-content h5 { 
+	font-size: 1.1em; 
+}
+
+.post-content h6 {
+	font-size: 0.9em;
+}
+
+.post-content h1+h1, .post-content h1+h2, .post-content h1+h3, .post-content h1+h4, .post-content h1+h5, .post-content h1+h6,
+.post-content h2+h1, .post-content h2+h2, .post-content h2+h3, .post-content h2+h4, .post-content h2+h5, .post-content h2+h6,
+.post-content h3+h1, .post-content h3+h2, .post-content h3+h3, .post-content h3+h4, .post-content h3+h5, .post-content h3+h6,
+.post-content h4+h1, .post-content h4+h2, .post-content h4+h3, .post-content h4+h4, .post-content h4+h5, .post-content h4+h6,
+.post-content h5+h1, .post-content h5+h2, .post-content h5+h3, .post-content h5+h4, .post-content h5+h5, .post-content h5+h6,
+.post-content h6+h1, .post-content h6+h2, .post-content h6+h3, .post-content h6+h4, .post-content h6+h5, .post-content h6+h6 {
+	margin-top: 25px;
+}
+
+.post-content blockquote {
+	margin: 0 0 1.2em;
+	padding: 5px 10px;
+	line-height: 1.5;
+	border-left: 10px solid #3692c5;
+	color: #666;
+}
+
+.post-content blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+.post-content cite {
+	font-weight: 400;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	line-height: 1.6;
+	color: #999;
+}
+
+.post-content cite:before { 
+	content: "— "; 
+}
+
+.post-content blockquote cite {
+	display: block;
+	margin-top: 1em;
+	font-size: 0.8em;
+}
+
+.post-content blockquote cite em { 
+	font-style: italic; 
+	font-weight: bold; 
+}
+
+.post-content code {
+	padding: 4px;
+	font-size: 16px;
+	border-radius: 5px;
+	background-color: #373e40;
+	color: #fff;
+}
+
+.post-content pre {
+	max-height: 30em;
+	font-size: 1.05em;
+	border-left: 10px solid #3692c5;
+	background-color: #fdfdfd;
+}
+
+.post-content pre code {
+	padding: 4px;
+	font-size: 14px;
+	background-color: #fdfdfd;
+	color: #000;
+}
+
+.post-content hr {
+	width: 50%;
+	height: 4px;
+	margin: 2em auto;
+	background: #EEE;
+	border: 0;
+}
+
+.post-content ul {
+	list-style: disc;
+	margin-left: 1.5em;
+}
+
+.post-content ul ul { 
+	list-style: circle; 
+}
+.post-content ul ul ul { 
+	list-style: square; 
+}
+
+.post-content ol {
+	list-style: decimal;
+	margin-left: 1.5em;
+}
+
+.post-content ol ol { 
+	list-style: lower-alpha; 
+}
+
+.post-content ol ol ol {
+	list-style: lower-roman;
+}
+
+.post-content ul ul,
+.post-content ul ol,
+.post-content ol ul,
+.post-content ol ol {
+	margin-bottom: 0;
+}
+
+.post-content li {
+	margin-bottom: 0.8em;
+	line-height: 1.6;
+}
+
+.post-content ul > li:last-child,
+.post-content ol > li:last-child {
+	margin-bottom: 0;
+}
+
+.post-content li ul li:first-child,
+.post-content li ol li:first-child {
+	margin-top: 0.5em;
+}
+
+.post-content address {
+	padding: 3% 3.5%;
+	background: #F1F1F1;
 }
 
 .post-footer {
@@ -929,7 +1121,7 @@ a:active {
 	font-size: 0.9em; 
 	font-weight: 400;
 	color: #999;
-	line-height: 1.2;
+	line-height: 1.5;
 	padding-left: 38px;
 }
 
@@ -1063,215 +1255,6 @@ a:active {
 	text-align: left;
 }
 
-/* Post content */
-
-.post-content { 
-	font-size: 1.05em; 
-}
-
-.post-content p,
-.post-content ul,
-.post-content ol,
-.post-content dl,
-.post-content pre,
-.post-content address,
-.post-content blockquote,
-.post-content .wp-caption {
-	line-height: 1.4;
-	margin-bottom: 1.1em;
-}
-
-.post-content h1, 
-.post-content h2, 
-.post-content h3, 
-.post-content h4, 
-.post-content h5, 
-.post-content h6 {
-	margin: 40px 0 30px;
-	line-height: 1.4;
-	letter-spacing: 1px;
-	font-weight: 400; 
-	color: #444;
-}
-
-.post-content h1 { 
-	font-size: 2em; 
-}
-
-.post-content h2 { 
-	font-size: 1.75em;  
-}
-
-.post-content h3 { 
-	font-size: 1.5em;  
-}
-
-.post-content h4 { 
-	font-size: 1.25em; 
-}
-
-.post-content h5 { 
-	font-size: 1.1em; 
-}
-
-.post-content h6 {
-	font-size: 0.9em;
-}
-
-.post-content h1+h1, .post-content h1+h2, .post-content h1+h3, .post-content h1+h4, .post-content h1+h5, .post-content h1+h6,
-.post-content h2+h1, .post-content h2+h2, .post-content h2+h3, .post-content h2+h4, .post-content h2+h5, .post-content h2+h6,
-.post-content h3+h1, .post-content h3+h2, .post-content h3+h3, .post-content h3+h4, .post-content h3+h5, .post-content h3+h6,
-.post-content h4+h1, .post-content h4+h2, .post-content h4+h3, .post-content h4+h4, .post-content h4+h5, .post-content h4+h6,
-.post-content h5+h1, .post-content h5+h2, .post-content h5+h3, .post-content h5+h4, .post-content h5+h5, .post-content h5+h6,
-.post-content h6+h1, .post-content h6+h2, .post-content h6+h3, .post-content h6+h4, .post-content h6+h5, .post-content h6+h6 {
-	margin-top: 25px;
-}
-
-.post-content blockquote {
-	padding: 1.1em;
-	line-height: 150%;
-	color: #666;
-	background: #EEE;
-}
-
-.post-content cite {
-	font-weight: 700;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	line-height: 140%;
-	color: #666;
-}
-
-.post-content cite:before { 
-	content: "— "; 
-}
-
-.post-content blockquote cite {
-	display: block;
-	margin-top: 1em;
-	font-size: 0.8em;
-}
-
-.post-content blockquote cite em { 
-	font-style: italic; 
-	font-weight: bold; 
-}
-
-em, q {  
-	font-style: italic;  
-}
-
-.post-content strong em,
-.post-content em strong {
-	font-weight: bold;
-	font-style: italic;
-}
-
-.post-content big { 
-	font-size: 1.25em; 
-}
-
-abbr, acronym { 
-	cursor: help; 
-}
-
-code, kbd, pre {
-	font-size: 0.85em;
-	font-family: Menlo, Monaco, monospace;
-	background: #EEE;
-}
-
-.post-content .highlight {
-	display: inline;
-	padding: 2px 3px;
-	width: auto;
-	background: #fcf8a5;
-}
-
-.post-content kbd,
-.post-content code {
-	padding: 5px;
-	border-radius: 3px;
-}
-
-.post-content dl { 
-	line-height: 160%; 
-}
-
-.post-content dl dt { 
-	font-weight: bold; 
-}
-
-.post-content hr {
-	width: 50%;
-	height: 4px;
-	margin: 2em auto;
-	background: #EEE;
-	border: 0;
-}
-
-.post-content ul {
-	list-style: disc;
-	margin-left: 1.5em;
-}
-
-.post-content ul ul { 
-	list-style: circle; 
-}
-.post-content ul ul ul { 
-	list-style: square; 
-}
-
-.post-content ol {
-	list-style: decimal;
-	margin-left: 1.5em;
-}
-
-.post-content ol ol { 
-	list-style: lower-alpha; 
-}
-
-.post-content ol ol ol {
-	list-style: lower-roman;
-}
-
-.post-content ul ul,
-.post-content ul ol,
-.post-content ol ul,
-.post-content ol ol {
-	margin-bottom: 0;
-}
-
-.post-content li {
-	margin-bottom: 0.5em;
-	line-height: 170%;
-}
-
-.post-content li ol li:first-child,
-.post-content li ul li:first-child {
-	margin-top: 0.5em;
-}
-
-
-.post-content ol > li:last-child,
-.post-content ul > li:last-child {
-	margin-bottom: 0;
-}
-
-.post-content address {
-	padding: 3% 3.5%;
-	background: #F1F1F1;
-}
-
-.post-content pre {
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	line-height: 140%;
-	padding: 2% 2.5%;
-	background: #f1f1f1;
-}
-
-
 /* Post media */
 
 .wp-caption { 
@@ -1370,7 +1353,7 @@ img.alignright,
 	padding: 2%;
 	margin: 0;
 	overflow: visible;
-	line-height: 120%;
+	line-height: 1.5;
 	border-bottom: 1px solid #DDD;
 }
 
@@ -1384,7 +1367,7 @@ img.alignright,
 
 .post-content fieldset legend {
 	font-size: 0.8rem;
-	line-height: 1;
+	line-height: 1.5;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -1427,7 +1410,7 @@ img.alignright,
 
 .post-content textarea { 
 	height: 180px; 
-	line-height: 140%;
+	line-height: 1.5;
 }
 
 .post-content input[type="text"]:focus,
@@ -1448,7 +1431,7 @@ img.alignright,
 	background: #333;
 	color: #fff;
 	font-size: 0.9rem;
-	line-height: 1;
+	line-height: 1.5;
 	-webkit-appearance: none;
 	border-radius: 3px;
 	-webkit-appearance: none;
@@ -1600,7 +1583,7 @@ li > div.comment {
 
 .pingbacklist li {
 	padding: 0.5em;
-	line-height: 130%;
+	line-height: 1.5;
 }
 
 .pingbacklist a:hover { 
@@ -1780,7 +1763,7 @@ li > div.comment {
 
 #respond p,
 #respond code {
-	line-height: 150%;
+	line-height: 1.5;
 }
 
 #respond code { 
@@ -1855,7 +1838,7 @@ p.logged-in-as {
 
 p.form-allowed-tags {
 	margin-top: 1.5em;
-	line-height: 160%
+	line-height: 1.5;
 }
 
 .comment-form p.form-submit { 
@@ -2158,7 +2141,7 @@ object {
 	}
 
 	.site-main {
-	  padding: 0 10px;
+	  padding: 20px 15px;
 	  text-align: center;
 	}
 
@@ -2189,6 +2172,10 @@ object {
 		display: none;
 	}
 
+	.pagination {
+    	margin-top: 2em;
+	}
+
 	.page-numbers {
 		display: none;
 	}
@@ -2210,28 +2197,8 @@ object {
 	  font-size: 0.85em;
 	}
 
-	.post-content h1 { 
-		font-size: 1.6em; 
-	}
-
-	.post-content h2 { 
-		font-size: 1.4em;  
-	}
-
-	.post-content h3 { 
-		font-size: 1.2em;  
-	}
-
-	.post-content h4 { 
-		font-size: 1em; 
-	}
-
-	.post-content h5 { 
-		font-size: 0.8em; 
-	}
-
-	.post-content h6 {
-		font-size: 0.6em;
+	.post-nav a {
+		font-size: 14px;
 	}
 
 	.not-found .search-field {
