@@ -107,3 +107,15 @@ function infiniture_comment( $comment, $args, $depth ) {
 			break;
 	endswitch;
 }
+
+/**
+ * Custom excerpt length
+ *
+ * @param string $comment.
+ * @param string $args.
+ * @param string $depth.
+ */
+function new_excerpt_length( $length ) {
+    return 40;
+}
+add_filter('excerpt_length', 'new_excerpt_length');

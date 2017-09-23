@@ -141,4 +141,3 @@ function infiniture_comment_form() {
 	comment_form( $comments_args );
 }
 endif;
-

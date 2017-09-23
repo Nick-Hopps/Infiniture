@@ -1323,11 +1323,11 @@ img.alignright,
 
 .post-content > table {
 	border-collapse: collapse;
-  border-spacing: 0;
-  empty-cells: show;
-  font-size: 0.9em;
-  width: 100%;
-  margin-bottom: 1.1em;
+  	border-spacing: 0;
+  	empty-cells: show;
+  	font-size: 0.9em;
+  	width: 100%;
+  	margin-bottom: 1.2em;
 }
 
 .post-content > table caption {
@@ -1341,7 +1341,9 @@ img.alignright,
 	white-space: nowrap;
 }
 
-.post-content > table tbody tr:nth-child(odd) > td { background: #f9f9f9; }
+.post-content > table tbody tr:nth-child(odd) > td { 
+	background: #f0f0f0; 
+}
 
 .post-content > table th {
 	font-weight: bold;
