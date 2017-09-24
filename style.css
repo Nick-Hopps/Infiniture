@@ -512,14 +512,12 @@ a:active {
 .main-navigation ul li {
 	position: relative;
 	float: left;
-	height: 100%;
 	line-height: 60px;
-	transition: all .3s;
 	cursor: pointer;
-}
-
-.main-navigation ul li:hover {
-	background-color: #495A80;
+	transition: all .3s;
+  -o-transition: all .3s;
+  -moz-transition: all .3s;
+  -webkit-transition: all .3s;
 }
 
 .main-navigation ul li a {
@@ -528,21 +526,22 @@ a:active {
 	color: #fff;
 }
 
+.main-navigation ul li a:hover {
+	background-color: #495A80;
+}
+
 /* Second layer */
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-	left: auto;
+.main-navigation ul li:hover > ul {
+	display: block;
 }
 
 .main-navigation ul ul {
+	display: none;
 	position: absolute;
-	float: left;
-	top: 100%;
-	left: -999em;
 	margin-left: 0;
 	background-color: #3692c5;
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	z-index: 99999;
+	box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+	z-index: 999;
 }
 
 .main-navigation ul ul a {
@@ -550,18 +549,23 @@ a:active {
 }
 
 /* Third layer */
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-	left: 100%;
+.main-navigation ul ul li:hover > ul {
+	display: block;
 }
 
 .main-navigation ul ul ul {
-	left: -999em;
+	display: none;
+	position: absolute;
 	top: 0;
+	left: 100%;
+	margin-left: 0;
+	background-color: #3692c5;
+	box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+	z-index: 999;
 }
 
 /* Mobile menu. */
-.main-navigation.nav-toggled ul {
+.main-navigation.menu-toggled .blog-menu {
 	display: block;
 }
 
@@ -1985,7 +1989,13 @@ object {
 /*--------------------------------------------------------------
 # Media Queries
 --------------------------------------------------------------*/
-@media (max-width: 1200px) {
+@media (min-width: 801px) {
+	.main-navigation ul {
+		display: block;
+	}
+}
+
+@media (max-width: 1280px) {
 	.article-container {
 	  width: 100%;
 	  float: none;
@@ -1993,13 +2003,7 @@ object {
 	}
 }
 
-@media (min-width: 769px) {
-	.main-navigation ul {
-		display: block;
-	}
-}
-
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 	/* Sidebar */
 	.sidebar {
 		position: relative;
@@ -2049,12 +2053,12 @@ object {
 	}
 
 	/* Nav button */
-	.nav-toggle {
+	.menu-toggle {
     float: left;
     margin-left: 9%;
 	}
 
-	.nav-toggle .bar {
+	.menu-toggle .bar {
     display: block;
     width: 24px;
     height: 3px;
@@ -2062,7 +2066,7 @@ object {
     background: #fff;
 	}
 
-	.nav-toggle .bar:first-child {
+	.menu-toggle .bar:first-child {
 	    margin-top: 0;
 	}
 
@@ -2111,6 +2115,24 @@ object {
 		float: none;
 	}
 
+	.main-navigation ul ul {
+		display: block;
+		position: relative;
+		box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2) inset;
+	}
+
+	.main-navigation ul ul a {
+	    width: 100%;
+	}
+
+	.main-navigation ul ul ul {
+		display: block;
+		position: relative;
+		left: 0;
+		border-left: 10px solid #3692c5;
+		box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2) inset;
+	}
+
 	.blog-search {
 		text-align: center;
 		margin: 40px 0;
@@ -2140,6 +2162,10 @@ object {
 		width: 100%;
 		max-width: 100%;
 		float: none;
+	}
+
+	.site-header {
+		min-width: 360px;	
 	}
 
 	.site-main {

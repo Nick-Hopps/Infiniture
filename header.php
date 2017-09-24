@@ -49,7 +49,7 @@
 		<div class="site-header clear">
 			<nav id="site-navigation" class="main-navigation clear">
 				<div class="toggle-container hidden clear">
-					<div class="nav-toggle toggle">
+					<div class="menu-toggle toggle">
 						<div class="bar"></div>
 						<div class="bar"></div>
 						<div class="bar"></div>
@@ -61,14 +61,14 @@
 						<div class="handle"></div>					
 					</div>
 				</div>
-				<ul class="clear hidden">
+				<ul class="blog-menu hidden clear">
 					<?php wp_list_categories( array(
 						'hide_empty' => false,
 			      'orderby' => 'id',
 			      'title_li' => ''
 			    ) ); ?>
 				</ul> 
-				<div class="blog-search hidden">
+				<div class="blog-search hidden clear">
 					<?php get_search_form(); ?>
 				</div>
 		  </nav><!-- #site-navigation -->

@@ -7,7 +7,7 @@
 ( function() {
 
 	/**
-	 * Resize the height of #primary if #content's height can't fill the window.
+	 * 如果#content的高度不能填满窗口，就重新设置#primary的高度
    */
 	if ( window.addEventListener ) {
 		window.addEventListener( 'load', function() {
@@ -25,7 +25,7 @@
 	}
 
 	/**
-	 * For browsers do not support css method calc().
+	 * 如果浏览器不支持CSS的calc()方法，就用JS代替
    */
   $content = document.body.querySelector( '#content' );
   $content_maxW = window.getComputedStyle( $content, null ).getPropertyValue("max-width");
