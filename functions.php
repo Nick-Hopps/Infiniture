@@ -43,9 +43,9 @@ if ( ! function_exists( 'infiniture_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		/*register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'infiniture' ),
-		) );*/
+		register_nav_menus( array(
+			'menu-1' => 'Primary',
+		) );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -76,24 +76,13 @@ if ( ! function_exists( 'infiniture_setup' ) ) :
 		add_theme_support( 'custom-logo', array(
 			'height'      => 160,
 			'width'       => 160,
-			'flex-width'  => false,
-			'flex-height' => false,
+			'flex-width'  => true,
+			'flex-height' => true,
+			'header-text' => array( 'site-title', 'site-description' ),
 		) );
 	}
 endif;
 add_action( 'after_setup_theme', 'infiniture_setup' );
-
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function infiniture_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'infiniture_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'infiniture_content_width', 0 );
 
 /**
  * Register widget area.
@@ -102,9 +91,18 @@ add_action( 'after_setup_theme', 'infiniture_content_width', 0 );
  */
 function infiniture_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'infiniture' ),
+		'name'          => '侧边栏',
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'infiniture' ),
+		'description'   => '添加部件',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => '移动端侧边栏',
+		'id'            => 'sidebar-2',
+		'description'   => '添加部件',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -134,8 +132,7 @@ add_action( 'wp_enqueue_scripts', 'infiniture_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-//require get_template_directory() . '/inc/custom-header.php';
-/* Do not use custom header */
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -151,11 +148,3 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-

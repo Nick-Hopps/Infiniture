@@ -20,8 +20,8 @@ function infiniture_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'infiniture_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+		'width'                  => 1920,
+		'height'                 => 1080,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'infiniture_header_style',
 	) ) );
@@ -37,12 +37,13 @@ if ( ! function_exists( 'infiniture_header_style' ) ) :
 	 */
 	function infiniture_header_style() {
 		$header_text_color = get_header_textcolor();
+		$header_image = get_header_image();
 
 		/*
 		 * If no custom options for text are set, let's bail.
 		 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: add_theme_support( 'custom-header' ).
 		 */
-		if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
+		if ( empty( $header_image ) && get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
 			return;
 		}
 
@@ -65,6 +66,20 @@ if ( ! function_exists( 'infiniture_header_style' ) ) :
 			.site-title a,
 			.site-description {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
+			}
+		<?php endif; ?>
+		<?php 
+		// Has a Custom Header been added?
+		if ( ! empty( $header_image ) ) :
+		?>
+			.sidebar {
+				background-image: url(<?php header_image(); ?>);
+				background-repeat: no-repeat;
+				background-position: 50% 50%;
+				-webkit-background-size: cover;
+				-moz-background-size:    cover;
+				-o-background-size:      cover;
+				background-size:         cover;
 			}
 		<?php endif; ?>
 		</style>

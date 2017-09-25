@@ -22,15 +22,15 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'infiniture' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php echo '跳转至内容'; ?></a>
 
 	<div id="sidebar" class="sidebar">
 		<header id="masthead" class="masthead">
 			<div class="site-branding clear">
-				<div class="col-md-4">
+				<div class="branding">
 					<?php the_custom_logo(); ?>
 				</div>
-				<div class="col-md-8">
+				<div class="branding">
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 					<?php 
 					$description = get_bloginfo( 'description', 'display' );
@@ -62,14 +62,21 @@
 					</div>
 				</div>
 				<ul class="blog-menu hidden clear">
-					<?php wp_list_categories( array(
-						'hide_empty' => false,
-			      'orderby' => 'id',
-			      'title_li' => ''
-			    ) ); ?>
+					<?php 
+						wp_nav_menu( array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu'
+						) );
+			    ?>
 				</ul> 
 				<div class="blog-search hidden clear">
-					<?php get_search_form(); ?>
+					<?php
+					if ( ! is_active_sidebar( 'sidebar-2' ) ) {
+						get_search_form();
+					} else {
+						dynamic_sidebar( 'sidebar-2' );
+					}
+					?>
 				</div>
 		  </nav><!-- #site-navigation -->
 		</div>

@@ -37,9 +37,9 @@ get_header(); ?>
 
 			<?php
 			the_posts_pagination( array(
-				'prev_text'          => __( '上一页', 'infiniture' ),
-				'next_text'          => __( '下一页', 'nfiniture' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( '页码', 'infiniture' ) . ' </span>',
+				'prev_text'          => '上一页',
+				'next_text'          => '下一页',
+				'before_page_number' => '<span class="meta-nav screen-reader-text">页码</span>'
 			) );
 			?>
 					

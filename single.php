@@ -35,11 +35,11 @@ get_header(); ?>
 										
 										<span class="separator">/</span>
 										
-										<?php comments_popup_link( '<span class="comment">' . __( '0 评论', 'hemingway' ) . '</span>', __( '1 评论', 'hemingway' ), __( '% 评论', 'infiniture' ) ); ?>
+										<?php comments_popup_link( '0 评论', '1 评论', '% 评论' ); ?>
 										
 										<?php if ( current_user_can( 'manage_options' ) ) { ?>
 											<span class="separator">/</span>
-											<?php edit_post_link( __( '编辑', 'hemingway' ) ); ?>
+											<?php edit_post_link( '编辑' ); ?>
 										<?php } ?>
 																
 									</div>
@@ -61,8 +61,8 @@ get_header(); ?>
 										<?php 
 										$prev_post = get_previous_post();
 										if ( ! empty( $prev_post ) ) : ?>
-											<a class="post-nav-older" title="<?php _e( '上一篇文章:', 'infiniture' ); echo ' ' . get_the_title( $prev_post ); ?>" href="<?php echo get_permalink( $prev_post->ID ); ?>">
-												<h5><?php _e('上一篇文章', 'hemingway'); ?></h5>																
+											<a class="post-nav-older" title="<?php echo '上一篇文章: '. get_the_title( $prev_post ); ?>" href="<?php echo get_permalink( $prev_post->ID ); ?>">
+												<h5><?php echo '上一篇文章'; ?></h5>																
 												<?php echo get_the_title( $prev_post ); ?>
 											</a>
 										<?php endif; ?>
@@ -70,8 +70,8 @@ get_header(); ?>
 										<?php
 										$next_post = get_next_post();
 										if ( ! empty( $next_post ) ): ?>
-											<a class="post-nav-newer" title="<?php _e( '下一篇文章:', 'infiniture' ); echo ' ' . get_the_title( $next_post ); ?>" href="<?php echo get_permalink( $next_post->ID ); ?>">
-												<h5><?php _e('下一篇文章', 'hemingway'); ?></h5>							
+											<a class="post-nav-newer" title="<?php echo '下一篇文章: ' . get_the_title( $next_post ); ?>" href="<?php echo get_permalink( $next_post->ID ); ?>">
+												<h5><?php echo '下一篇文章'; ?></h5>							
 												<?php echo get_the_title( $next_post ); ?>
 											</a>
 										<?php endif; ?>
@@ -87,7 +87,7 @@ get_header(); ?>
 						</div> <!-- .posts -->
 					<?php endwhile; 
 				else: ?>
-					<p><?php _e("找不到请求的文章，请重新尝试！", "infiniture"); ?></p>
+					<p><?php echo '找不到请求的文章，请重新尝试！'; ?></p>
 				<?php endif; ?>   
 			</div><!-- #post-main -->
 		</main><!-- #main -->

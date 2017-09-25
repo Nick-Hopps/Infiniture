@@ -14,11 +14,11 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'infiniture' ); ?></h1>
+					<h1 class="page-title"><?php echo 'Oops! That page can&rsquo;t be found.'; ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php esc_html_e( '看起来在这个位置没有找到任何东西，尝试下面的链接或搜索？', 'infiniture' ); ?></p>
+					<p><?php echo '看起来在这个位置没有找到任何东西，尝试下面的链接或搜索？'; ?></p>
 					<?php get_search_form(); ?>
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->

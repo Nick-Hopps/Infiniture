@@ -18,8 +18,7 @@ get_header(); ?>
 
 					<header class="page-header">
 						<h1 class="page-title"><?php
-							/* translators: %s: search query. */
-							printf( esc_html__( '搜索: %s', 'infiniture' ), '<span>' . get_search_query() . '</span>' );
+							printf( '搜索: %s', '<span>' . get_search_query() . '</span>' );
 						?></h1>
 					</header><!-- .page-header -->
 
@@ -46,9 +45,9 @@ get_header(); ?>
 
 			<?php
 			the_posts_pagination( array(
-				'prev_text'          => __( '上一页', 'infiniture' ),
-				'next_text'          => __( '下一页', 'nfiniture' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( '页码', 'infiniture' ) . ' </span>',
+				'prev_text'          => '上一页',
+				'next_text'          => '下一页',
+				'before_page_number' => '<span class="meta-nav screen-reader-text">页码</span>',
 			) );
 			?>
 					

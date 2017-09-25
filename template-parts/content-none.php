@@ -11,7 +11,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'infiniture' ); ?></h1>
+		<h1 class="page-title"><?php echo 'Nothing Found'; ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content">
@@ -19,29 +19,18 @@
 		if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
 			<p><?php
-				printf(
-					wp_kses(
-						/* translators: 1: link to WP admin new post page. */
-						__( '发布一篇新的文章? <a href="%1$s">从这里开始</a>.', 'infiniture' ),
-						array(
-							'a' => array(
-								'href' => array(),
-							),
-						)
-					),
-					esc_url( admin_url( 'post-new.php' ) )
-				);
+				printf( '发布一篇新的文章? <a href="%1$s">从这里开始</a>.', esc_url( admin_url( 'post-new.php' ) ) );
 			?></p>
 
 		<?php elseif ( is_search() ) : ?>
 
-			<p><?php esc_html_e( '抱歉, 没有找到您所搜索的内容，请重新搜索。', 'infiniture' ); ?></p>
+			<p><?php echo '抱歉, 没有找到您所搜索的内容，请重新搜索。'; ?></p>
 			<?php
 				get_search_form();
 
 		else : ?>
 
-			<p><?php esc_html_e( '未能找到您所寻找的信息，请尝试搜索。', 'infiniture' ); ?></p>
+			<p><?php echo '未能找到您所寻找的信息，请尝试搜索。'; ?></p>
 			<?php
 				get_search_form();
 

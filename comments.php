@@ -39,8 +39,8 @@ if ( post_password_required() )
 				
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 				<div class="comment-nav-below" role="navigation">				
-					<div class="post-nav-older"><?php previous_comments_link( __( '旧的评论 &raquo;', 'infiniture' ) ); ?></div>
-					<div class="post-nav-newer"><?php next_comments_link( __( '&laquo; 新的评论', 'infiniture' ) ); ?></div>
+					<div class="post-nav-older"><?php previous_comments_link( '旧的评论 &raquo;' ); ?></div>
+					<div class="post-nav-newer"><?php next_comments_link( '&laquo; 新的评论' ); ?></div>
 					<div class="clear"></div>
 				</div> <!-- /comment-nav-below -->
 			<?php endif; ?>
@@ -50,7 +50,7 @@ if ( post_password_required() )
 	<?php endif; ?>
 	
 	<?php if ( ! comments_open() && !is_page() ) : ?>
-		<p class="no-comments"><?php esc_html_e( '评论功能已经关闭.', 'infiniture' ); ?></p>
+		<p class="no-comments"><?php echo '评论功能已经关闭'; ?></p>
 	<?php endif; ?>
 	
 	<?php

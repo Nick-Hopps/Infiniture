@@ -1,14 +1,14 @@
 /*!
 Theme Name: infiniture
-Theme URI: http://underscores.me/
-Author: Underscores.me
-Author URI: http://underscores.me/
-Description: Description
-Version: 1.0.0
+Theme URI: http://www.infiniture.cn/
+Author: NickHopps
+Author URI: http://www.infiniture.cn/
+Description: A concise and responsive theme
+Version: 2.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: infiniture
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags:  custom-background、custom-logo、custom-menu、featured-images、threaded-comments
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -337,6 +337,10 @@ body {
 	font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
+html, body, .site {
+	height: 100%;
+}
+
 *,
 *:before,
 *:after {
@@ -509,7 +513,7 @@ a:active {
 ## Menus
 --------------------------------------------------------------*/
 /* First layer */
-.main-navigation ul li {
+.main-navigation .blog-menu ul li {
 	position: relative;
 	float: left;
 	line-height: 60px;
@@ -520,22 +524,22 @@ a:active {
   -webkit-transition: all .3s;
 }
 
-.main-navigation ul li a {
+.main-navigation .blog-menu ul li a {
 	display: block;
 	padding: 0 30px;
 	color: #fff;
 }
 
-.main-navigation ul li a:hover {
-	background-color: #495A80;
+.main-navigation .blog-menu ul li a:hover {
+	background-color: #20B2AA;
 }
 
 /* Second layer */
-.main-navigation ul li:hover > ul {
+.main-navigation .blog-menu ul li:hover > ul {
 	display: block;
 }
 
-.main-navigation ul ul {
+.main-navigation .blog-menu ul ul {
 	display: none;
 	position: absolute;
 	margin-left: 0;
@@ -544,16 +548,16 @@ a:active {
 	z-index: 999;
 }
 
-.main-navigation ul ul a {
+.main-navigation .blog-menu ul ul a {
 	width: 200px;
 }
 
 /* Third layer */
-.main-navigation ul ul li:hover > ul {
+.main-navigation .blog-menu ul ul li:hover > ul {
 	display: block;
 }
 
-.main-navigation ul ul ul {
+.main-navigation .blog-menu ul ul ul {
 	display: none;
 	position: absolute;
 	top: 0;
@@ -673,7 +677,6 @@ a:active {
 	position: fixed;
 	height: 100%;
 	width: 20%;
-	min-width: 320px;
 	overflow: hidden;
 	background-color: #47474a;
 }
@@ -753,9 +756,15 @@ a:active {
 --------------------------------------------------------------*/
 .content {
 	position: relative;
+	height: 100%;
 	width: 80%;
-	max-width: calc(100% - 320px);
 	float: right;
+}
+
+.content-area {
+	min-height: -webkit-calc( 100% - 124px );
+	min-height: -moz-calc( 100% - 124px );
+	min-height: calc( 100% - 124px );
 }
 
 .site-header {
@@ -883,7 +892,7 @@ a:active {
 }
 
 .site-footer a:hover {
-	color: #47474a;
+	color: #20B2AA;
 }
 
 /*--------------------------------------------------------------
@@ -1876,21 +1885,6 @@ p.form-allowed-tags {
 }
 
 /*--------------------------------------------------------------
-# Infinite scroll
---------------------------------------------------------------*/
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .posts-navigation,
-.infinite-scroll.neverending .site-footer {
-	/* Theme Footer (when set to scrolling) */
-	display: none;
-}
-
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
-.infinity-end.neverending .site-footer {
-	display: block;
-}
-
-/*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
 .page-content .wp-smiley,
@@ -1989,56 +1983,53 @@ object {
 /*--------------------------------------------------------------
 # Media Queries
 --------------------------------------------------------------*/
-@media (min-width: 801px) {
+@media (min-width: 1281px) {
 	.main-navigation ul {
 		display: block;
 	}
 }
 
-@media (max-width: 1280px) {
-	.article-container {
-	  width: 100%;
-	  float: none;
-	  text-align: center;
+@media (max-width: 1600px) {
+	.sidebar {
+		width: 25%;
+	}
+
+	.content {
+		width: 75%;
 	}
 }
 
-@media (max-width: 800px) {
-	/* Sidebar */
+@media (max-width: 1280px) {
+	/*
+	 * Sidebar 
+	 */
 	.sidebar {
 		position: relative;
+		height: auto;
 		width: 100%;
-		min-width: 360px;
-		overflow: hidden;
-		background-color: #47474a;
 		float: none;
 	}
 
-	.col-md-4 {
-		width: 33.3%;
-		float: left;
-	}
-
-	.col-md-8 {
-		width: 66.6%;
-		float: left;
+	.custom-logo-link {
+		height: 130px;
+		width: 130px;
 	}
 
 	.site-branding {
 		margin-top: 0;
-		padding: 20px 15px;
-		line-height: 100%;
+		padding: 40px 15px;
 	}
 
-	.custom-logo-link {
-		height: 100px;
-		width: 100px;
+	.site-branding .branding {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 20px;
 	}
 
 	.widget-area {
 		display: none;
 	}
-	/* Menus */
+
 	.toggle-container {
 		display: block;
 	}
@@ -2052,7 +2043,7 @@ object {
     cursor: pointer;
 	}
 
-	/* Nav button */
+	/* Menu button */
 	.menu-toggle {
     float: left;
     margin-left: 9%;
@@ -2067,7 +2058,7 @@ object {
 	}
 
 	.menu-toggle .bar:first-child {
-	    margin-top: 0;
+	  margin-top: 0;
 	}
 
 	/* Search button */
@@ -2110,22 +2101,89 @@ object {
 		transform: rotate(-45deg);
 	}
 
-	/* Nav menu and search form */
-	.main-navigation ul li {
+	/* Search form */
+	.main-navigation .blog-search {
+		text-align: center;
+		margin: 40px 0;
+	}
+
+	.main-navigation .blog-search .search-field {
+		height: 40px;
+		width: 230px;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	.main-navigation .blog-search .search-submit {
+		height: 40px;
+		padding: 0 20px;
+		font-size: 16px;
+		color: #efefef;
+		background-color: #20B2AA;
+		border: none;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	/* 
+	 * Content 
+	 */
+	.content {
+		position: relative;
+		width: 100%;
+		max-width: 100%;
+		float: none;
+	}
+}
+
+@media (max-width: 1000px) {
+	.article-container {
+	  width: 100%;
+	  float: none;
+	  text-align: center;
+	}
+}
+
+@media (max-width: 600px) {
+	/* 
+	 * Sidebar 
+	 */
+	.sidebar {
+		position: relative;
+		height: auto;
+		width: 100%;
+		min-width: 320px;
+		overflow: hidden;
+		background-color: #47474a;
 		float: none;
 	}
 
-	.main-navigation ul ul {
+	.site-branding {
+		margin-top: 0;
+		padding: 20px 15px;
+	}
+
+	.custom-logo-link {
+		height: 120px;
+		width: 120px;
+	}
+
+	/* Menu form */
+	.main-navigation .blog-menu ul li {
+		float: none;
+	}
+
+	.main-navigation .blog-menu ul ul {
 		display: block;
 		position: relative;
 		box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2) inset;
 	}
 
-	.main-navigation ul ul a {
+	.main-navigation .blog-menu ul ul a {
 	    width: 100%;
 	}
 
-	.main-navigation ul ul ul {
+	.main-navigation .blog-menu ul ul ul {
 		display: block;
 		position: relative;
 		left: 0;
@@ -2133,30 +2191,9 @@ object {
 		box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2) inset;
 	}
 
-	.blog-search {
-		text-align: center;
-		margin: 40px 0;
-	}
-
-	.blog-search .search-field {
-		height: 40px;
-		width: 200px;
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-	}
-
-	.blog-search .search-submit {
-		height: 40px;
-		padding: 0 20px;
-		font-size: 16px;
-		color: #efefef;
-		background-color: #47474a;
-		border: none;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-	}
-
-	/* Content */
+	/* 
+	 * Content 
+	 */
 	.content {
 		position: relative;
 		width: 100%;
@@ -2165,7 +2202,7 @@ object {
 	}
 
 	.site-header {
-		min-width: 360px;	
+		min-width: 320px;	
 	}
 
 	.site-main {

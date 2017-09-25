@@ -14,8 +14,7 @@
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
 			<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( '%1$s by %2$s', 'infiniture' ), 'Infiniture', '<a href="#">NickHopps</a>' );
+				printf( '%1$s by %2$s', 'Infiniture', '<a href="#">NickHopps</a>' );
 			?>
 			<span>&copy;2017</span>
 		</div><!-- .site-info -->
