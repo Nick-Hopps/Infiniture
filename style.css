@@ -787,6 +787,18 @@ a:active {
 	text-align: center;
 }
 
+.search-result .search-title {
+	font-size: 1.6em;
+	color: #555;
+}
+
+.search-result .underline {
+	display: inline-block;
+	width: 9em;
+	margin-bottom: 3em;
+	border-top: 3px solid #666;
+}
+
 .site-main article {
 	position: relative;
 	width: 100%;

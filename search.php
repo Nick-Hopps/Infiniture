@@ -16,10 +16,15 @@ get_header(); ?>
 				<?php
 				if ( have_posts() ) : ?>
 
-					<header class="page-header">
-						<h1 class="page-title"><?php
-							printf( '搜索: %s', '<span>' . get_search_query() . '</span>' );
+					<header class="search-result">
+						<h1 class="search-title"><?php
+							if ( '' == get_search_query() ) {
+								printf( '搜索: 全部' );
+							} else {
+								printf( '搜索: %s', '<span>' . get_search_query() . '</span>' );
+							}
 						?></h1>
+						<span class="underline"></span>
 					</header><!-- .page-header -->
 
 					<?php
@@ -44,12 +49,16 @@ get_header(); ?>
 			</div>
 
 			<?php
-			the_posts_pagination( array(
-				'prev_text'          => '上一页',
-				'next_text'          => '下一页',
-				'before_page_number' => '<span class="meta-nav screen-reader-text">页码</span>',
-			) );
+				if ( $GLOBALS['wp_query']->max_num_pages > 1 ):
 			?>
+
+			<nav class="navigation pagination clear" role="navigation">
+				<h2 class="screen-reader-text">文章导航</h2>
+				<div class="previous"><?php previous_posts_link( '上一页' ); ?></div>
+				<div class="next"><?php next_posts_link( '下一页' ); ?></div>
+			</nav>
+
+			<?php endif ?>	
 					
 		</main><!-- #main -->
 	</section><!-- #primary -->
