@@ -40,10 +40,10 @@ add_action( 'wp_head', 'infiniture_pingback_header' );
 function infiniture_search_form( $form ) {
     $form = '<form class="search-form" role="search" method="get"  action="' . home_url( '/' ) . '" >
     <label>
-    	<span class="screen-reader-text">' . esc_html__( '搜索' ) . '</span>
-    	<input class="search-field" placeholder="' . esc_html__( '请输入搜索内容' ) . '" value="' . get_search_query() . '" name="s" type="search" />
+    	<span class="screen-reader-text">搜索</span>
+    	<input class="search-field" placeholder="请输入搜索内容" value="' . get_search_query() . '" name="s" type="search" />
     </label>
-    <input class="search-submit" value="'. esc_html__( '搜索' ) .'" type="submit" />
+    <input class="search-submit" value="搜索" type="submit" />
     </form>';
 
     return $form;
@@ -66,7 +66,7 @@ function infiniture_comment( $comment, $args, $depth ) {
 	?>
 	
 	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-		<?php __( 'Pingback:', 'hemingway' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'hemingway' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php echo 'Pingback: '; ?> <?php comment_author_link(); ?> <?php edit_comment_link( '(编辑)', '<span class="edit-link">', '</span>' ); ?>
 	</li>
 
 	<?php
@@ -83,7 +83,7 @@ function infiniture_comment( $comment, $args, $depth ) {
 				<div class="comment-meta-content">
 					<?php printf( '<cite class="fn">%1$s %2$s</cite>',
 						get_comment_author_link(),
-						( $comment->user_id === $post->post_author ) ? '<span class="post-author"> ' . __( '(作者)', 'infiniture' ) . '</span>' : ''
+						( $comment->user_id === $post->post_author ) ? '<span class="post-author">(作者)</span>' : ''
 					); ?>
 					<p><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php echo get_comment_date() . ' at ' . get_comment_time() ?></a></p>
 				</div> <!-- /comment-meta-content -->
@@ -91,14 +91,14 @@ function infiniture_comment( $comment, $args, $depth ) {
 
 			<div class="comment-content post-content">
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-					<p class="comment-awaiting-moderation"><?php _e( '等待审核', 'infiniture' ); ?></p>
+					<p class="comment-awaiting-moderation"><?php echo '等待审核'; ?></p>
 				<?php endif; ?>
 
 				<?php comment_text(); ?>
 
 				<div class="comment-actions">
-					<?php edit_comment_link( __( '编辑', 'infiniture' ), '', '' ); ?>
-					<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( '回复', 'infiniture' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+					<?php edit_comment_link( '编辑', '', '' ); ?>
+					<?php comment_reply_link( array_merge( $args, array( 'reply_text' => '回复', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 					<div class="clear"></div>
 				</div> <!-- /comment-actions -->
 			</div><!-- /comment-content -->
@@ -109,13 +109,15 @@ function infiniture_comment( $comment, $args, $depth ) {
 }
 
 /**
- * Custom excerpt length
+ * Custom excerpt 
  *
- * @param string $comment.
- * @param string $args.
- * @param string $depth.
  */
 function new_excerpt_length( $length ) {
-    return 40;
+  return 60;
 }
 add_filter('excerpt_length', 'new_excerpt_length');
+
+function new_excerpt_more( $more ) {
+  return '...';
+}
+add_filter( 'excerpt_more', 'new_excerpt_more' );

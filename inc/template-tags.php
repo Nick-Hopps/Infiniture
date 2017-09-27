@@ -36,42 +36,16 @@ if ( ! function_exists( 'infiniture_entry_footer' ) ) :
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span><span class="separator">/</span><span class="byline"> ' . $byline . '</span><span class="separator">/</span>'; // WPCS: XSS OK.
+		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
 
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
-			comments_popup_link( __( '0 评论', 'infiniture' ), __( '1 评论', 'infiniture' ),
-				sprintf(
-					wp_kses(
-						/* translators: %s: conmments number, %s: post title */
-						__( '%s 评论<span class="screen-reader-text">%s</span>', 'infiniture' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_comments_number(),
-					get_the_title()
-				)
-			);
+			comments_popup_link( '0 评论', '1 评论', sprintf( '%s 评论 <span class="screen-reader-text">%s</span>', get_comments_number(), get_the_title() ) );
 			echo '</span>';
 		}
 		if ( current_user_can( 'manage_options' ) ) {
-			echo '<span class="separator">/</span>';
 			edit_post_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( '编辑 <span class="screen-reader-text">%s</span>', 'infiniture' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				),
+				sprintf( '编辑 <span class="screen-reader-text">%s</span>', get_the_title() ),
 				'<span class="edit-link">',
 				'</span>'
 			);
@@ -89,26 +63,24 @@ if ( ! function_exists( 'infiniture_post_thumbnail' ) ) :
  * @since Twenty Fifteen 1.0
  */
 function infiniture_post_thumbnail() {
-	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+	if ( post_password_required() || is_attachment() ) {
 		return;
 	}
 
-	if ( is_singular() ) :
+	if ( ! has_post_thumbnail() ):
 	?>
 
-	<div class="post-thumbnail">
-		<?php the_post_thumbnail(); ?>
-	</div><!-- .post-thumbnail -->
+		<a href="<?php the_permalink(); ?>" >
+			<div class="post-thumbnail"><?php bloginfo( 'name' ); ?></div>
+		</a><!-- .post-thumbnail -->
 
-	<?php else : ?>
+	<?php else: ?>
 
-	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
-		<?php
-			the_post_thumbnail( 'post-thumbnail', array( 'alt' => get_the_title() ) );
-		?>
-	</a>
+		<a href="<?php the_permalink(); ?>" >
+			<div class="post-thumbnail" style="background: url(<?php the_post_thumbnail_url();?>) center/cover no-repeat #fff;"></div>
+		</a><!-- .post-thumbnail -->
 
-	<?php endif; // End is_singular()
+	<?php endif;
 }
 endif;
 
@@ -127,14 +99,14 @@ function infiniture_comment_form() {
 	$aria_req = ( $req ? " aria-required='true'" : '' );
 	$html_req = ( $req ? " required='required'" : '' );
 	$fields = array(
-			'author' => '<p class="comment-form-author">' . '<input id="author" name="author" type="text" placeholder="' . __( '姓名', 'infiniture' ) . '" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $aria_req . $html_req . ' /></p>',
+			'author' => '<p class="comment-form-author">' . '<input id="author" name="author" type="text" placeholder="姓名" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $aria_req . $html_req . ' /></p>',
 
-			'email'  => '<p class="comment-form-email">' . '<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' placeholder="' . __( '邮箱', 'infiniture' ) . '" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></p>'
+			'email'  => '<p class="comment-form-email">' . '<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' placeholder="邮箱" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></p>'
 	);
 
 	$comments_args = array(
-		'comment_notes_before' => '<p class="comment-notes"><span id="email-notes">' . __( '您的邮件地址不会被公开', 'infiniture' ) . '</span></p>',
-		'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" placeholder="' . __( '评论', 'infiniture' ) . '" cols="45" rows="4" maxlength="65525" aria-required="true" required="required"></textarea></p>',
+		'comment_notes_before' => '<p class="comment-notes"><span id="email-notes">您的邮件地址不会被公开</span></p>',
+		'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" placeholder="评论" cols="45" rows="4" maxlength="65525" aria-required="true" required="required"></textarea></p>',
     'fields' => $fields
 	);
 
