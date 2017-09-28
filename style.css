@@ -718,7 +718,7 @@ a:active {
 
 .widget-area {
 	margin-top: 3em;
-	padding: 0 30px;
+	padding: 0 3em;
 	text-align: center;
 }
 
@@ -1550,7 +1550,7 @@ img.alignright,
 }
 
 .not-found .search-form {
-	width: 50%;
+	width: 100%;
 	margin: 40px auto;
 	font-size: 0;
 }
@@ -1558,7 +1558,8 @@ img.alignright,
 .not-found .search-field {
 	display: inline-block;
 	height: 40px;
-	width: 400px;
+	width: 75%;
+	max-width: 300px;
 	padding: 10px 15px;
 	vertical-align: middle;
 	border: 1px solid rgba(0, 0, 0, 0.2);
@@ -1577,6 +1578,8 @@ img.alignright,
 .not-found .search-submit {
 	display: inline-block;
 	height: 40px;
+	width: 25%;
+	max-width: 100px;
 	padding: 10px 20px;
 	vertical-align: middle;
 	font-size: 15px;
@@ -2184,6 +2187,7 @@ object {
 		display: inline-block;
 		height: 40px;
 		width: 75%;
+		max-width: 300px;
 		padding: 10px 15px;
 		vertical-align: middle;
 		border: none;
@@ -2194,6 +2198,7 @@ object {
 		display: inline-block;
 		height: 40px;
 		width: 25%;
+		max-width: 100px;
 		padding: 10px 0;
 		vertical-align: middle;
 		font-size: 15px;
@@ -2219,6 +2224,12 @@ object {
 		width: 100%;
 		max-width: 100%;
 		float: none;
+	}
+
+	.content-area {
+		min-height: -webkit-calc( 100% - 121px );
+		min-height: -moz-calc( 100% - 121px );
+		min-height: calc( 100% - 121px );
 	}
 }
 
@@ -2299,7 +2310,9 @@ object {
 	}
 
 	.post-thumbnail {
+		height: 260px;
 	  width: 100%;
+	  line-height: 260px;
 	}
 
 	.entry {
@@ -2309,6 +2322,14 @@ object {
 		box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.3);
 		background-color: rgba(255, 255, 255, 0.8);
 	}
+
+	.entry .entry-header {
+    font-size: 1em;
+	}
+
+	.entry .entry-content {
+    font-size: 0.8em;
+  }
 
 	.post-title {
 		font-size: 1.8em;
